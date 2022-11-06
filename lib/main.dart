@@ -98,6 +98,19 @@ class _RandomWordsState extends State<RandomWords> {
             // Si esta guardado muestra el mensaje de remove, sino el de guardar
             semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
           ),
+          onTap: () {
+            // SetState es llamado dentro del metodo build por lo que actualiza la pantalla 
+            setState(() {
+              // Verificamos si el valor alreadysaved del elemento actual esta en true o false
+              if(alreadySaved){
+                // Si se hace tap en el elemento y estaba en la lista de saved se retira
+                _saved.remove(_suggestions[index]);
+              }else{
+                // Si se hace tap ene l elemento y no estaba en la lista de saved se agrega
+                _saved.add(_suggestions[index]);
+              }
+            });
+          },
         );
       },
     );
