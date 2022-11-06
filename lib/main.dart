@@ -58,8 +58,10 @@ class RandomWords extends StatefulWidget {
 
 // Esta seria la clase del estado del widget se usa el prefijo _
 class _RandomWordsState extends State<RandomWords> {
-   final _suggestions = <WordPair>[];
+  final _suggestions = <WordPair>[];
   final _biggerFont = const TextStyle(fontSize: 18);
+  // Se agrega el arreglo en donde se van a guardar las palabras favoritas
+  final _saved = <WordPair>{};
   @override
   // Widget que construye la lista de recomendaciones 
    Widget build(BuildContext context) {
@@ -78,11 +80,23 @@ class _RandomWordsState extends State<RandomWords> {
           // Agrega a la lista 10 elementos de la funcion generateWordPairs 
           _suggestions.addAll(generateWordPairs().take(10)); /*4*/
         }
+        // Se verifica si la palabra fue agregada a favoritos 
+        final alreadySaved = _saved.contains(_suggestions[index]);
         // Regresa la lista de sugerencias como pascal case con el estilo definido en la variable _biggerFont
         return ListTile(
           title: Text(
             _suggestions[index].asPascalCase,
             style: _biggerFont,
+          ),
+          // Se agrega el icono de guardado en los items de la lista
+          trailing: Icon(
+            // Segun el estado de guardado realiza los siguientes cambios 
+            // Si esta guardado aplica el icono completo, sino solo el borde
+            alreadySaved ? Icons.favorite : Icons.favorite_border,
+            // Si esta guardado pinta el icono de rojo, sino no se pinta
+            color: alreadySaved ? Colors.red : null,
+            // Si esta guardado muestra el mensaje de remove, sino el de guardar
+            semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
           ),
         );
       },
