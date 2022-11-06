@@ -51,13 +51,41 @@ class RandomWords extends StatefulWidget {
   // LLama al creador de estados
   State<RandomWords> createState() => _RandomWordsState();
 }
+
+// Shortcut para crear widget stateful o stateless
+// StateFul : stful
+// StateLess : stless
+
 // Esta seria la clase del estado del widget se usa el prefijo _
 class _RandomWordsState extends State<RandomWords> {
+   final _suggestions = <WordPair>[];
+  final _biggerFont = const TextStyle(fontSize: 18);
   @override
-  Widget build(BuildContext context) {
-    // Se instancia el generador aleatorio en la variable
-    final wordPair = WordPair.random();
-    // Regresa el texto generado como pascal case
-    return Text(wordPair.asPascalCase);
+  // Widget que construye la lista de recomendaciones 
+   Widget build(BuildContext context) {
+    // Regresa la vista con la lista de elementos 
+    return ListView.builder(
+      // Agrega padding a todos los lados de la vista 
+      padding: const EdgeInsets.all(16.0),
+      // Construye los elementos de la lista uno por uno por callback 
+      itemBuilder: /*1*/ (context, i) {
+        // Agrega un divisor entre los elementos de la lista 
+        if (i.isOdd) return const Divider(); /*2*/
+        // Divide i sobre 2 regresando valor int 
+        final index = i ~/ 2; /*3*/
+        // Si el index supera la longitud de la lista agrega 10 elementos extra 
+        if (index >= _suggestions.length) {
+          // Agrega a la lista 10 elementos de la funcion generateWordPairs 
+          _suggestions.addAll(generateWordPairs().take(10)); /*4*/
+        }
+        // Regresa la lista de sugerencias como pascal case con el estilo definido en la variable _biggerFont
+        return ListTile(
+          title: Text(
+            _suggestions[index].asPascalCase,
+            style: _biggerFont,
+          ),
+        );
+      },
+    );
   }
 }
