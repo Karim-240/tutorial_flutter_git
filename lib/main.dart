@@ -20,10 +20,20 @@ class MyApp extends StatelessWidget {
   // Se crea el widget que es lo que se muestra en pantalla 
   Widget build(BuildContext constext){
     // Regresamos el widget con la construccion realizada 
-    return const MaterialApp(
+    return MaterialApp(
       // Se agrega el titulo del widget en web se ve como 
-      // titulo de la ventan 
+      // titulo de la ventana 
       title: 'Titulo de pagina',
+      // Se agrega la propiedad de tema 
+      theme: ThemeData(
+        // Se indica que se va a trabajar con el tema de la navbar
+        appBarTheme: const AppBarTheme(
+          // Indicamos el color del fondo
+          backgroundColor: Colors.white,
+          // Indicamos el color del primer plano
+          foregroundColor: Color.fromARGB(239, 9, 234, 46),
+        ),
+      ),
       // Es la estructura general de la vista 
       // Se retiro Scaffold para que se maneje desde el constructor de RandomWords
       // y asi se pueda interactuar con el icono de guardados que se va a agregar
