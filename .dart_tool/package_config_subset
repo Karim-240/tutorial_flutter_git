@@ -1,7 +1,7 @@
 tutorial_git
 2.18
-file:///D:/Flutter%20Projects/Tutorial/tutorial_git/
-file:///D:/Flutter%20Projects/Tutorial/tutorial_git/lib/
+file:///D:/Flutter%20Projects/tutorial_flutter_git/
+file:///D:/Flutter%20Projects/tutorial_flutter_git/lib/
 async
 2.14
 file:///D:/Flutter/.pub-cache/hosted/pub.dartlang.org/async-2.9.0/
@@ -26,6 +26,10 @@ cupertino_icons
 2.12
 file:///D:/Flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.5/
 file:///D:/Flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.5/lib/
+english_words
+2.12
+file:///D:/Flutter/.pub-cache/hosted/pub.dartlang.org/english_words-4.0.0/
+file:///D:/Flutter/.pub-cache/hosted/pub.dartlang.org/english_words-4.0.0/lib/
 fake_async
 2.12
 file:///D:/Flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.1/

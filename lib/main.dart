@@ -1,7 +1,8 @@
 // Se agrega el paquete de material dart que se encarga
 // de crear el tema/plantilla 
 import 'package:flutter/material.dart';
-
+// Libreria que obtiene palabras en ingles para el ejemplo
+import 'package:english_words/english_words.dart';
 // Funcion principal que llama a los elementos de ejecucion
 void main(){
   // Se ejecuta como constante a clase MyApp 
@@ -12,6 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   // Se crea el widget que es lo que se muestra en pantalla 
   Widget build(BuildContext constext){
+    // Seria como crear una instancia del generador de palabras aleatorias
+    final wordPair = WordPair.random();
     // Regresamos el widget con la construccion realizada 
     return MaterialApp(
       // Se agrega el titulo del widget en web se ve como 
@@ -25,9 +28,11 @@ class MyApp extends StatelessWidget {
           title: const Text('Bien venido a Flutter'),
         ),
         // Se indica que los  descendientes del cuerpo estaran centrados 
-        body: const Center(
+        // Se elimino el const ya que el valor no viene de un string declarado 
+        body: Center(
           // Es como un div en web que contiene el texto declarado
-          child: Text('Texto central'),
+          // El texto se tomara de la instancia y se indica que sera escrito en pascalcase
+          child: Text(wordPair.asPascalCase),
         ),
       ),
     );
